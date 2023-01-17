@@ -21,6 +21,12 @@ This repo is meant to be used as a starting point for a user's own configuration
 
 If there are languages that you don't want to use, remove their configuration and notes from your `init.lua` after copy and pasting (for example, in the mason configuration).
 
+Install node and npm and run `npm install -g tree-sitter-cli`
+Install externall dependencies ripgrep and fd-find for telescope grep to work
+Also helpfule to run `:checkhealth <dependancy name>`
+
+
+
 ### Windows Installation
 
 Installation may require installing build tools, and updating the run command for `telescope-fzf-native`
