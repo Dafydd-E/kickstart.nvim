@@ -6,12 +6,11 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
-vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Move up half a page and centre cursor' })
-vim.keymap.set('n', '<C-u', '<C-u>zz', { desc = 'Move down half a page and center cursor' })
+vim.keymap.set('n', '<C-j>', '<C-d>zz', { desc = 'Move up half a page and centre cursor' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Move down half a page and center cursor' })

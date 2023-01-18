@@ -30,13 +30,13 @@ require('packer').startup(function(use)
     'hrsh7th/nvim-cmp',
     requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   }
-        
-        use {
-  'nvim-tree/nvim-tree.lua',
-  requires = {
-    'nvim-tree/nvim-web-devicons', -- optional, for file icons
-  },
-} -- file explorer
+
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+  } -- file explorer
 
   use { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -68,8 +68,20 @@ require('packer').startup(function(use)
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
-  
+
   use 'jose-elias-alvarez/null-ls.nvim'
+
+  use 'mfussenegger/nvim-dap'
+  use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
+
+  use {
+    'nvim-neotest/neotest',
+    requires = {
+      {
+        'Issafalcon/neotest-dotnet',
+      },
+    },
+  }
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -103,9 +115,9 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = vim.fn.expand '$MYVIMRC',
 })
 
-require("core.config")
+require 'core.config'
 
-require("core.keymaps")
+require 'core.keymaps'
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -118,9 +130,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-require("plugins.nvim-tree")
+require 'plugins.nvim-tree'
 
-require("plugins.lualine")
+require 'plugins.lualine'
 
 -- Enable Comment.nvim
 require('Comment').setup()
@@ -132,10 +144,12 @@ require('indent_blankline').setup {
   show_trailing_blankline_indent = false,
 }
 
-require("plugins.gitsigns")
+require 'plugins.gitsigns'
 
-require("plugins.telescope")
-require("plugins.treesitter")
-require("plugins.lsp_config")
-require("plugins.autocomplete")
-require("plugins.null-ls")
+require 'plugins.telescope'
+require 'plugins.treesitter'
+require 'plugins.lsp_config'
+require 'plugins.autocomplete'
+require 'plugins.null-ls'
+require 'plugins.nvim-dap'
+require 'plugins.test'
