@@ -1,4 +1,7 @@
-local dap = require 'dap'
+local dap_setup, dap = pcall(require, 'dap')
+if not dap_setup then
+  return
+end
 
 dap.adapters.coreclr = {
   type = 'executable',
@@ -23,16 +26,10 @@ dap.adapters.netcoredbg = {
   args = { '--interpreter=vscode' },
 }
 
-local keymap = vim.keymap
-
-keymap.set('n', '<C-D><C-C>', "<Cmd>lua require'dap'.continue()<CR>")
-keymap.set('n', '<C-D><C-S>', "<Cmd>lua require'dap'.step_over()<CR>")
-keymap.set('n', '<C-D><C-I>', "<Cmd>lua require'dap'.step_into()<CR>")
-keymap.set('n', '<C-D><C-O>', "<Cmd>lua require'dap'.step_out()<CR>")
-keymap.set('n', '<C-D><C-B>', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
-keymap.set('n', '<C-D><C-R>', "<Cmd>lua require'dap'.repl.open()<CR>")
-
-local dapui = require 'dapui'
+local dapui_setup, dapui = pcall(require, 'dapui')
+if not dapui_setup then
+  return
+end
 
 dapui.setup {
   icons = { expanded = '▾', collapsed = '▸', current_frame = '▸' },

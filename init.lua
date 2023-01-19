@@ -26,6 +26,8 @@ require('packer').startup(function(use)
     },
   }
 
+  use 'folke/which-key.nvim'
+
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
     requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
@@ -70,6 +72,7 @@ require('packer').startup(function(use)
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
   use 'jose-elias-alvarez/null-ls.nvim'
+  use 'windwp/nvim-autopairs'
 
   use 'mfussenegger/nvim-dap'
   use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
@@ -116,40 +119,24 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 })
 
 require 'core.config'
-
 require 'core.keymaps'
-
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
+require 'core.colours'
 
 require 'plugins.nvim-tree'
-
+require 'plugins.comment'
 require 'plugins.lualine'
-
--- Enable Comment.nvim
-require('Comment').setup()
-
--- Enable `lukas-reineke/indent-blankline.nvim`
--- See `:help indent_blankline.txt`
-require('indent_blankline').setup {
-  char = '┊',
-  show_trailing_blankline_indent = false,
-}
-
+require 'plugins.indent'
 require 'plugins.gitsigns'
-
 require 'plugins.telescope'
 require 'plugins.treesitter'
-require 'plugins.lsp_config'
-require 'plugins.autocomplete'
 require 'plugins.null-ls'
 require 'plugins.nvim-dap'
 require 'plugins.test'
+require 'plugins.which-key'
+require 'plugins.autopairs'
+
+
+require 'lsp.keymaps'
+require 'lsp.cmp'
+require 'lsp.neodev'
+require 'lsp.lsp_config'
