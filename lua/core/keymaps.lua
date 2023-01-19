@@ -42,4 +42,4 @@ keymap.set('n', '<leader>du', "<cmd>lua require'dapui'.toggle()<cr>")
 keymap.set('n', '<leader>dt', "<cmd>lua require'dap'.terminate()<cr>")
 
 -- Lsp
-keymap('n', '<leader>lf', '<cmd>lua vim.lsp.buf.format{ async = true }<cr>', opts)
+keymap.set('n', '<leader>lf', '<cmd>lua vim.lsp.buf.format{ async = true }<cr>')
