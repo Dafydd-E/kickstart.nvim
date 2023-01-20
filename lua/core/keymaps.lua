@@ -45,4 +45,4 @@ keymap.set('n', '<leader>dt', "<cmd>lua require'dap'.terminate()<cr>")
 keymap.set('n', '<leader>lf', '<cmd>lua vim.lsp.buf.format{ async = true }<cr>')
 
 -- Terminal
-keymap('n', '<leader>gg', '<cmd>lua _TERM_TOGGLE()<CR>', opts)
+keymap.set('n', '<leader>gg', '<cmd>lua _TERM_TOGGLE()<CR>')

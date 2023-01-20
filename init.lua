@@ -27,6 +27,7 @@ require('packer').startup(function(use)
   }
 
   use 'folke/which-key.nvim'
+  use 'EdenEast/nightfox.nvim'
 
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',

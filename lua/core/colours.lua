@@ -9,4 +9,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	pattern = '*',
 })
 
-vim.cmd [[colorscheme onedark]]
+local scheme_setup, scheme = pcall(require, 'nightfox')
+if not scheme_setup then
+	return
+end
+
+scheme.setup()
+
+vim.cmd [[colorscheme carbonfox]]
