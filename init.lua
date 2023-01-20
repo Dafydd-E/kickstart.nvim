@@ -77,6 +77,7 @@ require('packer').startup(function(use)
   use 'mfussenegger/nvim-dap'
   use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
 
+use {"akinsho/toggleterm.nvim" }
   use {
     'nvim-neotest/neotest',
     requires = {
@@ -134,7 +135,7 @@ require 'plugins.nvim-dap'
 require 'plugins.test'
 require 'plugins.which-key'
 require 'plugins.autopairs'
-
+require 'plugins.toggleterm'
 
 require 'lsp.keymaps'
 require 'lsp.cmp'
