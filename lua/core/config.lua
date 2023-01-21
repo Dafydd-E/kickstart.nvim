@@ -3,6 +3,7 @@
 
 -- Set highlight on search
 vim.o.hlsearch = false
+vim.o.wrap = false
 
 -- Make line numbers default
 vim.wo.number = true

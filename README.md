@@ -11,6 +11,10 @@ Kickstart.nvim targets *only* the latest ['stable'](https://github.com/neovim/ne
 
 This repo is meant to be used as a starting point for a user's own configuration; remove the things you don't use and add what you miss. Please refrain from leaving comments about enabling / disabling particular languages out of the box.
 
+### Font
+
+font_family BitstreamVeraSansMono Nerd Font
+
 ### Installation
 
 * Backup your previous configuration
@@ -22,7 +26,10 @@ This repo is meant to be used as a starting point for a user's own configuration
 If there are languages that you don't want to use, remove their configuration and notes from your `init.lua` after copy and pasting (for example, in the mason configuration).
 
 Install node and npm and run `npm install -g tree-sitter-cli`
+Install `npm i -g editorconfig-checker`
 Install externall dependencies ripgrep and fd-find for telescope grep to work
+`sudo apt install fd` and `sudo apt install ripgrep` on Linux
+
 Also helpfule to run `:checkhealth <dependancy name>`
 
 

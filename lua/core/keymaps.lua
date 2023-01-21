@@ -30,8 +30,8 @@ vim.keymap.set('n', '<S-h>', ':bprevious<CR>')
 vim.keymap.set('n', '<S-q>', '<cmd>Bdelete!<CR>')
 
 -- DAP
-keymap.set('n', '<C-D><C-B>', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
-keymap.set('n', '<leader>db', "<cmd>lua require'dap'.toggle_breakpoint()<cr>")
+keymap.set('n', '<leader>db', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+-- keymap.set('n', '<leader>db', "<cmd>lua require'dap'.toggle_breakpoint()<cr>")
 keymap.set('n', '<leader>dc', "<cmd>lua require'dap'.continue()<cr>")
 keymap.set('n', '<leader>di', "<cmd>lua require'dap'.step_into()<cr>")
 keymap.set('n', '<leader>do', "<cmd>lua require'dap'.step_over()<cr>")
