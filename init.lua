@@ -10,7 +10,7 @@ end
 require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
-
+  use 'matbme/JABS.nvim'
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     requires = {
@@ -71,14 +71,19 @@ require('packer').startup(function(use)
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+  use 'chentoast/marks.nvim'
+  use 'MattesGroeger/vim-bookmarks'
 
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'windwp/nvim-autopairs'
-
+  use {
+    'SmiteshP/nvim-navic',
+    requires = 'neovim/nvim-lspconfig',
+  }
   use 'mfussenegger/nvim-dap'
   use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
 
-use {"akinsho/toggleterm.nvim" }
+  use { 'akinsho/toggleterm.nvim' }
   use {
     'nvim-neotest/neotest',
     requires = {
@@ -137,6 +142,8 @@ require 'plugins.test'
 require 'plugins.which-key'
 require 'plugins.autopairs'
 require 'plugins.toggleterm'
+require 'plugins.vim-bookmarks'
+require 'plugins.jabs'
 
 require 'lsp.keymaps'
 require 'lsp.cmp'

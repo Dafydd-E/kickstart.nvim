@@ -1,6 +1,5 @@
 -- If you don't want to use the telescope plug-in but still want to see all the errors/warnings, comment out the telescope line and uncomment this:
 -- vim.api.nvim_set_keymap('n', '<leader>dd', '<cmd>lua vim.diagnostic.setloclist()<CR>', { noremap = true, silent = true })
---
 vim.diagnostic.config {
   severity_sort = true,
   float = {
@@ -44,7 +43,7 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
+  tsserver = {},
   omnisharp = {
     enable_editorconfig_support = true,
     enable_roslyn_analyzers = true,
@@ -59,7 +58,13 @@ local servers = {
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+local cmp_lsp_setup, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+if not cmp_lsp_setup then
+  return
+end
+
+capabilities = cmp_lsp.default_capabilities(capabilities)
 
 -- Setup mason so it can manage external tooling
 local mason_setup, mason = pcall(require, 'mason')
