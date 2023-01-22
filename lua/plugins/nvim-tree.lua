@@ -1,4 +1,4 @@
-local setup, nvimTree = pcall(require, "nvim-tree")
+local setup, nvimTree = pcall(require, 'nvim-tree')
 if not setup then
     return
 end
@@ -7,6 +7,7 @@ end
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Toggle nvim tree view' })
 
 nvimTree.setup()
+

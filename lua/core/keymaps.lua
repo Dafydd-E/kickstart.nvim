@@ -46,3 +46,11 @@ keymap.set('n', '<leader>lf', '<cmd>lua vim.lsp.buf.format{ async = true }<cr>')
 
 -- Terminal
 keymap.set('n', '<leader>gg', '<cmd>lua _TERM_TOGGLE()<CR>')
+
+-- Tabs
+keymap.set('n', '<A-,>', ':tabprevious<CR>')
+keymap.set('n', '<A-.>', ':tabnext<CR>')
+keymap.set('n', '<A-n>', ':tabnew<CR>')
+keymap.set('n', '<A-c>', ':tabclose<CR>')
+keymap.set('n', '<A-f>', ':tabfirst<CR>')
+keymap.set('n', '<A-l>', ':tablast<CR>')

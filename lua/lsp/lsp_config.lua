@@ -96,4 +96,9 @@ mason_lspconfig.setup_handlers {
 }
 
 -- Turn on lsp status information
-require('fidget').setup()
+local fidget_setup, fidget = pcall(require, 'fidget')
+if not fidget_setup then
+  return
+end
+
+--fidget.setup()

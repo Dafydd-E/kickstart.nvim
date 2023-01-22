@@ -11,6 +11,13 @@ require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
   use 'matbme/JABS.nvim'
+
+  --use { 'romgrk/barbar.nvim', wants = 'nvim-web-devicons' }
+  use {
+    'ggandor/leap.nvim',
+    keys = { 's', 'S' },
+  }
+
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     requires = {
@@ -71,6 +78,18 @@ require('packer').startup(function(use)
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+  use { 'LinArcX/telescope-command-palette.nvim' }
+
+  -- Legendary
+  use {
+    'mrjones2014/legendary.nvim',
+    keys = { [[<C-p>]] },
+    requires = { 'stevearc/dressing.nvim' },
+    config = function()
+      require 'plugins.legendary'
+    end,
+  }
+
   use 'chentoast/marks.nvim'
   use 'MattesGroeger/vim-bookmarks'
 
@@ -144,8 +163,13 @@ require 'plugins.autopairs'
 require 'plugins.toggleterm'
 require 'plugins.vim-bookmarks'
 require 'plugins.jabs'
+require 'plugins.leap'
+require 'plugins.legendary'
+--require 'plugins.barbar'
 
 require 'lsp.keymaps'
 require 'lsp.cmp'
+require 'lsp.neodev'
+require 'lsp.lsp_config'
 require 'lsp.neodev'
 require 'lsp.lsp_config'
