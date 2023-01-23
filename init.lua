@@ -15,7 +15,6 @@ require('packer').startup(function(use)
   --use { 'romgrk/barbar.nvim', wants = 'nvim-web-devicons' }
   use {
     'ggandor/leap.nvim',
-    keys = { 's', 'S' },
   }
 
   use { -- LSP Configuration & Plugins
@@ -36,10 +35,18 @@ require('packer').startup(function(use)
   use 'folke/which-key.nvim'
   use 'EdenEast/nightfox.nvim'
 
+  use { 'kkharji/lspsaga.nvim' }
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+    },
   }
+
+  use 'RRethy/vim-illuminate'
 
   use {
     'nvim-tree/nvim-tree.lua',
@@ -101,6 +108,11 @@ require('packer').startup(function(use)
   }
   use 'mfussenegger/nvim-dap'
   use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
+
+  use {
+    'folke/trouble.nvim',
+    requires = 'nvim-tree/nvim-web-devicons',
+  }
 
   use { 'akinsho/toggleterm.nvim' }
   use {
@@ -173,3 +185,4 @@ require 'lsp.neodev'
 require 'lsp.lsp_config'
 require 'lsp.neodev'
 require 'lsp.lsp_config'
+require 'lsp.trouble'
