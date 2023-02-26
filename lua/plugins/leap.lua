@@ -3,4 +3,5 @@ if not leap_setup then
   return
 end
 
+-- overridden x as cut, use d instead
 leap.add_default_mappings()

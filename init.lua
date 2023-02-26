@@ -12,10 +12,15 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'matbme/JABS.nvim'
 
+  use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
+
   --use { 'romgrk/barbar.nvim', wants = 'nvim-web-devicons' }
   use {
     'ggandor/leap.nvim',
   }
+
+  use 'Hoffs/omnisharp-extended-lsp.nvim'
+  use 'Decodetalkers/csharpls-extended-lsp.nvim'
 
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -177,6 +182,7 @@ require 'plugins.vim-bookmarks'
 require 'plugins.jabs'
 require 'plugins.leap'
 require 'plugins.legendary'
+require 'plugins.nvim-ufo'
 --require 'plugins.barbar'
 
 require 'lsp.keymaps'

@@ -46,6 +46,11 @@ if setup then
       's',
       'S',
       'CTRL-S',
+      'v',
+      'V',
+      'CTRL-V',
+      'vs',
+      'Vs',
     },
     under_cursor = true,
   }

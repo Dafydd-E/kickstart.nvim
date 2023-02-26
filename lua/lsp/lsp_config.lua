@@ -20,6 +20,18 @@ end
 --
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
+
+local pid = vim.fn.getpid()
+local omnisharp_bin = '/home/dafydd87/.local/share/nvim/mason/bin/omnisharp'
+
+-- csharp_ls = {
+--   handlers = {
+--     ['textDocument/definition'] = require('csharpls_extended').handler,
+--   },
+--   cmd = { 'csharp-ls' },
+--   filetypes = { 'cs' },
+-- },
+
 local servers = {
   -- clangd = {},
   -- gopls = {},
@@ -30,7 +42,7 @@ local servers = {
     enable_editorconfig_support = true,
     enable_roslyn_analyzers = true,
   },
-  sumneko_lua = {
+  lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
@@ -40,6 +52,12 @@ local servers = {
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local cmp_lsp_setup, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
 if not cmp_lsp_setup then
@@ -69,11 +87,30 @@ mason_lspconfig.setup {
 
 mason_lspconfig.setup_handlers {
   function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-    }
+    local lspconfig = require 'lspconfig'
+    if server_name == 'omnisharp' then
+      lspconfig['omnisharp'].setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = servers['omnisharp'],
+        handlers = {
+          ['textDocument/definition'] = require('omnisharp_extended').handler,
+        },
+        cmd = { omnisharp_bin, '--languageserver', '--hostPID', tostring(pid) },
+      }
+    else
+      lspconfig[server_name].setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = servers[server_name],
+      }
+    end
+  end,
+}
+
+require('ufo').setup {
+  provider_selector = function(_, _, _)
+    return { 'treesitter', 'indent' }
   end,
 }
 
@@ -82,5 +119,3 @@ mason_lspconfig.setup_handlers {
 -- if not fidget_setup then
 --   return
 -- end
-
---fidget.setup()
