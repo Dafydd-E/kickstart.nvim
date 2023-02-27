@@ -22,7 +22,8 @@ end
 --  the `settings` field of the server config. You must look up that documentation yourself.
 
 local pid = vim.fn.getpid()
-local omnisharp_bin = '/home/dafydd87/.local/share/nvim/mason/bin/omnisharp'
+local nvim_home = os.getenv 'NVIM_HOME'
+local omnisharp_bin = nvim_home .. '/mason/bin/omnisharp'
 
 -- csharp_ls = {
 --   handlers = {

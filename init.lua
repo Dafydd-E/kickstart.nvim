@@ -18,6 +18,8 @@ require('packer').startup(function(use)
   use {
     'ggandor/leap.nvim',
   }
+  -- Packer
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   use 'Hoffs/omnisharp-extended-lsp.nvim'
   use 'Decodetalkers/csharpls-extended-lsp.nvim'
@@ -183,6 +185,7 @@ require 'plugins.jabs'
 require 'plugins.leap'
 require 'plugins.legendary'
 require 'plugins.nvim-ufo'
+require 'plugins.diffview'
 --require 'plugins.barbar'
 
 require 'lsp.keymaps'
