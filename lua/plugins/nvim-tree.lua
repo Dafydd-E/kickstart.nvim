@@ -9,5 +9,23 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Toggle nvim tree view' })
 
-nvimTree.setup()
+local function change_root_to_global_cwd()
+    local api = require 'nvim-tree.api'
+    local global_cwd = vim.fn.getcwd()
+    print(global_cwd)
+    api.tree.change_root(global_cwd)
+end
 
+local config = {
+    view = {
+        mappings = {
+            custom_only = false,
+            list = {
+                { key = 'h', action = 'close_node' },
+                { key = 'w', action = 'global_cwd', action_cb = change_root_to_global_cwd },
+                { key = 'l', action = 'edit' },
+            },
+        },
+    },
+}
+nvimTree.setup(config)
